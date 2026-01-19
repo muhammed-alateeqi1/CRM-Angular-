@@ -238,7 +238,13 @@ This is a **training project** where I'm learning by doing. Each sprint teaches 
 
 **Current Status:** [working now on : sprint-1]
 
-**Lessons Learned:** []
+**Lessons Learned:** [
+## Lessons Learned
+- Git: Always commit after every meaningful change.
+- Tailwind CSS v3: Need postcss.config.json for Angular 17 projects.
+- Font Awesome: Include in angular.json under styles.
+- Angular CLI: `ng serve` vs `ng build` and the importance of build for production.
+]
 
 ---
 
