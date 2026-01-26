@@ -1,33 +1,63 @@
 <div class="login-section">
-  <div class="login-card">
-    <div class="login-header">
-      <div class="login-icon"><i class="fa-solid fa-user"></i></div>
-      <h1 class="login-title">Welcome to Mini CRM</h1>
-      <p class="login-subtitle">Sign in to Manage Your Customers</p>
-      </div>
-      <form class="login-form">
-        <!-- email form group -->
-        <div class="form-group">
-          <label for="email" class="form-label">Email Address</label>
-          <input
-            type="email"
-            name="password"
-            id="email"
-            class="form-input"
-            required
-          />
+    <div class="login-card">
+        <div class="login-header">
+            <div class="login-icon"><i class="fa-solid fa-user"></i></div>
+            <h1 class="login-title">Welcome to Mini CRM</h1>
+            <p class="login-subtitle">Sign in to Manage Your Customers</p>
         </div>
-        <!-- password form group -->
-        <div class="form-group">
-          <label for="password" class="form-label">Password</label>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            class="form-input"
-          />
-        </div>
-        <button class="btn-submit" type="submit">Sign In</button>
-      </form>
-  </div>
+        <form class="login-form" [formGroup]="loginForm" (ngSubmit)="formValidation()">
+            <!-- email form group -->
+            <div class="form-group">
+                <label for="email" class="form-label">Email Address</label>
+                <input formControlName="email" type="email" name="password" id="email" class="form-input" required />
+                @if (loginForm.get('email')?.touched || (loginForm.get('email')?.dirty && loginForm.get('email')?.invalid)) {
+                    @if (loginForm.get('email')?.errors?.['required']) {
+                        <div class="p-2 bg-[#331B2A] border-b-2 border-[#79292e] text-sm text-[#D7A7AA]">
+                            <i class="fa-solid fa-xmark mr-2 text-sm"></i>
+                            Email is required
+                        </div>
+                    }
+                    @if (loginForm.get('email')?.errors?.['email']) {
+                        <div class="p-2 bg-[#331B2A] border-b-2 border-[#79292e] text-sm text-[#D7A7AA]">
+                            <i class="fa-solid fa-xmark mr-2 text-sm"></i>
+                            Email is required
+                        </div>
+                    }
+                }
+            </div>
+
+            <!-- password form group -->
+            <div class="form-group">
+                <label for="password" class="form-label">Password</label>
+                <input formControlName="password" type="password" name="password" id="password" class="form-input" />
+                @if (loginForm.get('password')?.touched || (loginForm.get('password')?.dirty && loginForm.get('password')?.invalid)) {
+                    @if (loginForm.get('password')?.errors?.['required']) {
+                        <div class="p-2 bg-[#331B2A] border-b-2 border-[#79292e] text-sm text-[#D7A7AA]">
+                            <i class="fa-solid fa-xmark mr-2 text-sm"></i>
+                            Password is required
+                        </div>
+                    }
+                    @if (loginForm.get('password')?.errors?.['minlength']) {
+                        <div class="p-2 bg-[#331B2A] border-b-2 border-[#79292e] text-sm text-[#D7A7AA]">
+                            <i class="fa-solid fa-xmark mr-2 text-sm"></i>
+                            Password Should be atleast 8 characters
+                        </div>
+                    }
+                }
+            </div>
+            <button class="btn-submit" type="submit" [disabled]="isLoading">
+                @if (isLoading) {
+                    <span class="text-[#fff]"><i class="fa-solid fa-spinner"></i></span>
+                } @else {
+                    <span>Sign In</span>
+                }
+            </button>
+            @if (authError) {
+                <div class="p-2 bg-[#331B2A] border-b-2 border-[#79292e] text-sm text-[#D7A7AA]">
+                    <i class="fa-solid fa-xmark mr-2 text-sm"></i>
+                    {{ authError }}
+                </div>
+            }
+        </form>
+    </div>
 </div>
