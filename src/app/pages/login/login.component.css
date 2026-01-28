@@ -84,3 +84,22 @@
     rgba(45, 54, 117, 1) 100%
   );
 }
+.login-form .btn-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background: #2b2f3a; /* لون أهدى */
+  box-shadow: none;
+}
+
+.spinner{
+  animation: spin 2s infinite;
+}
+@keyframes spin {
+ 
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
