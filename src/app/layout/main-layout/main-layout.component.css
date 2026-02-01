@@ -1,0 +1,21 @@
+.main-layout {
+    background-color: #95a7ff;
+    color: #fff;
+    height: 100vh;
+    margin: auto;
+    padding: 20px 15px;
+    overflow-y: hidden;
+    display: flex;
+    flex-direction: column;
+}
+.layout-wrapper  {
+    display: flex;
+    flex: 1;
+    gap: 10px;
+}
+
+.content-area {
+    background-color: #181b34;
+    flex: 1;
+
+}
