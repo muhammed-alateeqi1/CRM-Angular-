@@ -2,15 +2,35 @@
 <aside class="sidebar">
     <div class="sidebar-header">
         <div class="logo"></div>
-        <h2>Mini CRM</h2>
+        <!-- <h2>Mini CRM</h2> -->
     </div>
     <!-- Navigation Links -->
     <nav class="sidebar-nav">
         <ul>
-            <li><a href="#">Test</a></li>
-            <li><a href="#">Test</a></li>
-            <li><a href="#">Test</a></li>
-            <li><a href="#">Test</a></li>
+            <a routerLink="dashboard" routerLinkActive="active">
+                <li>
+                    <i class="fa-solid fa-chart-bar"></i>
+                    Dashboard
+                </li>
+            </a>
+            <a routerLink="customers" routerLinkActive="active">
+                <li>
+                    <i class="fa-solid fa-users"></i>
+                    Customers
+                </li>
+            </a>
+            <a routerLink="leads" routerLinkActive="active">
+                <li>
+                    <i class="fa-solid fa-head-side-virus"></i>
+                    Leads
+                </li>
+            </a>
+            <a routerLink="deals" routerLinkActive="active">
+                <li>
+                    <i class="fa-solid fa-handshake"></i>
+                    Deals
+                </li>
+            </a>
         </ul>
     </nav>
 </aside>

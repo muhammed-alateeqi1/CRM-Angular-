@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-login',
@@ -13,7 +14,7 @@ export class LoginComponent {
     passwordScheme: string = '#admin123';
     authError: string = '';
     isLoading: boolean = false;
-    constructor() {}
+    constructor(private _Router: Router) {}
     ngOnInit() {
         this.clearAuthErrorOnInputChange();
     }
@@ -48,6 +49,7 @@ export class LoginComponent {
             }
             console.log('Login Successful <3');
             this.isLoading = false;
+            this._Router.navigate(['/dashboard']);
         }, 1000);
     }
     clearAuthErrorOnInputChange() {

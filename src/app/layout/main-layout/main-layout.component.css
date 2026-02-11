@@ -1,5 +1,5 @@
 .main-layout {
-    background-color: #95a7ff;
+    background-color: #292f4c;
     color: #fff;
     height: 100vh;
     margin: auto;
@@ -8,14 +8,35 @@
     display: flex;
     flex-direction: column;
 }
-.layout-wrapper  {
+.layout-wrapper {
     display: flex;
     flex: 1;
-    gap: 10px;
+    gap: 5px;
 }
 
 .content-area {
     background-color: #181b34;
     flex: 1;
+    padding: 10px;
+    border-radius: 10px;
+}
+.top-nav {
+    background-color: #292f4c;
+    padding: 0px 5px;
+}
 
+.top-nav .parent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+}
+
+.logo-img {
+    height: 40px;
+    width: auto;
+}
+
+.admin-item {
+    color: white;
 }
