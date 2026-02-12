@@ -25,11 +25,18 @@
     padding: 0px 5px;
 }
 
-.top-nav .parent {
+.top-nav .parent-list {
     display: flex;
     justify-content: space-between;
     align-items: center;
     list-style: none;
+}
+.top-nav .chiled-list .logout-btn {
+    color: #d5d8d7;
+    transition: all ease 0.2s;
+}
+.top-nav .chiled-list .logout-btn:hover {
+    color: #fafbfb;
 }
 
 .logo-img {
