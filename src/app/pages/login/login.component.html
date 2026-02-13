@@ -5,7 +5,7 @@
             <h1 class="login-title">Welcome to Mini CRM</h1>
             <p class="login-subtitle">Sign in to Manage Your Customers</p>
         </div>
-        <form class="login-form" [formGroup]="loginForm" (ngSubmit)="formValidation()">
+        <form class="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
             <!-- email form group -->
             <div class="form-group">
                 <label for="email" class="form-label">Email Address</label>

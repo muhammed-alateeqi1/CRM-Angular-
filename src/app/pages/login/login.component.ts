@@ -10,12 +10,12 @@ import { Router } from '@angular/router';
     styleUrl: './login.component.css',
 })
 export class LoginComponent {
-    emailScheme: string = 'admin@crm.com';
-    passwordScheme: string = '#admin123';
+    private readonly MOCK_EMAIL: string = 'admin@crm.com';
+    private readonly MOCK_PASSOWED: string = '#admin123';
     authError: string = '';
     isLoading: boolean = false;
     constructor(private _Router: Router) {}
-    ngOnInit() {
+    ngOnInit(): void {
         this.clearAuthErrorOnInputChange();
     }
     loginForm = new FormGroup({
@@ -23,27 +23,24 @@ export class LoginComponent {
         password: new FormControl<string>('', [Validators.required, Validators.minLength(8)]),
     });
 
-    formValidation() {
+    onSubmit(): void {
         this.authError = '';
         if (this.loginForm.invalid) {
             this.loginForm.markAllAsTouched();
             return;
         }
-        //auth logic
         this.isLoading = true;
         setTimeout(() => {
             const email = this.loginForm.value.email?.trim();
             const password = this.loginForm.value.password;
-            // console.log(this.loginForm.value)
-            if (email !== this.emailScheme) {
-                this.authError = 'incorrect email';
-                console.log('incorrect email');
+
+            if (email !== this.MOCK_EMAIL) {
+                this.authError = 'Incorrect email address';
                 this.isLoading = false;
                 return;
             }
-            if (password !== this.passwordScheme) {
-                this.authError = 'incorrect password try to enter vaild password';
-                console.log('incorrect password');
+            if (password !== this.MOCK_PASSOWED) {
+                this.authError = 'Incorrect password , Please try again.';
                 this.isLoading = false;
                 return;
             }
