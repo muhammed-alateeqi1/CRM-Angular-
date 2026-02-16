@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../../core/services/auth.service';
 
 @Component({
     selector: 'app-login',
@@ -10,13 +11,18 @@ import { Router } from '@angular/router';
     styleUrl: './login.component.css',
 })
 export class LoginComponent {
-    private readonly MOCK_EMAIL: string = 'admin@crm.com';
-    private readonly MOCK_PASSOWED: string = '#admin123';
     authError: string = '';
     isLoading: boolean = false;
-    constructor(private _Router: Router) {}
+    constructor(
+        private _Router: Router,
+        private _AuthService: AuthService
+    ) {}
     ngOnInit(): void {
         this.clearAuthErrorOnInputChange();
+        // test u should compelete the logout state tommorow + guards preparation 
+        this._AuthService.isAuthenticated$.subscribe((isAuth) => {
+            console.log('User is authenticated (test):', isAuth);
+        });
     }
     loginForm = new FormGroup({
         email: new FormControl<string>('', [Validators.required, Validators.email]),
@@ -31,22 +37,17 @@ export class LoginComponent {
         }
         this.isLoading = true;
         setTimeout(() => {
-            const email = this.loginForm.value.email?.trim();
-            const password = this.loginForm.value.password;
+            const email = this.loginForm.value.email?.trim() || '';
+            const password = this.loginForm.value.password || '';
 
-            if (email !== this.MOCK_EMAIL) {
-                this.authError = 'Incorrect email address';
-                this.isLoading = false;
-                return;
+            const result = this._AuthService.login(email, password);
+            if (result.success) {
+                console.log('Login Successful <3');
+                this._Router.navigate(['/dashboard']);
+            } else {
+                this.authError = result.error;
             }
-            if (password !== this.MOCK_PASSOWED) {
-                this.authError = 'Incorrect password , Please try again.';
-                this.isLoading = false;
-                return;
-            }
-            console.log('Login Successful <3');
             this.isLoading = false;
-            this._Router.navigate(['/dashboard']);
         }, 1000);
     }
     clearAuthErrorOnInputChange() {
