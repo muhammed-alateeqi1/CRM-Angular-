@@ -22,6 +22,7 @@ export class LoginComponent {
         // test u should compelete the logout state tommorow + guards preparation 
         this._AuthService.isAuthenticated$.subscribe((isAuth) => {
             console.log('User is authenticated (test):', isAuth);
+            this._AuthService.isAuthenticated$.subscribe(val => console.log('State changed:', val));
         });
     }
     loginForm = new FormGroup({

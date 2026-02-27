@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
     providedIn: 'root',
@@ -13,7 +14,7 @@ export class AuthService {
     // Auth State
     private isAuthenticatedSubject = new BehaviorSubject<boolean>(this.hasToken());
     isAuthenticated$ = this.isAuthenticatedSubject.asObservable();
-    constructor() {}
+    constructor(private _Router: Router) {}
 
     private hasToken(): boolean {
         console.log('Has token:', !!localStorage.getItem(this.TOKEN_KEY));
@@ -39,5 +40,10 @@ export class AuthService {
         const payload = btoa(JSON.stringify({ email: this.MOCK_EMAIL, role: 'admin', exp: Date.now() + 24 * 60 * 60 * 1000 }));
         const signature = btoa('mock_signature');
         return `${header},${payload},${signature}`;
+    }
+    logout() {
+        localStorage.removeItem('token');
+        this.isAuthenticatedSubject.next(false);
+        this._Router.navigate(['/login']);
     }
 }

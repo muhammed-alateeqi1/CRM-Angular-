@@ -37,6 +37,7 @@
 }
 .top-nav .chiled-list .logout-btn:hover {
     color: #fafbfb;
+    cursor: pointer;
 }
 
 .logo-img {
