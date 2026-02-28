@@ -46,4 +46,8 @@ export class AuthService {
         this.isAuthenticatedSubject.next(false);
         this._Router.navigate(['/login']);
     }
+
+    isLoggedIn(): boolean {
+        return this.isAuthenticatedSubject.value;
+    }
 }
