@@ -236,7 +236,7 @@ After mastering the frontend, I plan to add:
 
 This is a **training project** where I'm learning by doing. Each sprint teaches me new skills and brings me closer to being job-ready. I'm documenting my journey to track progress and demonstrate my growth as a developer.
 
-**Current Status:** [working now on : sprint-1]
+**Current Status:** [working now on : sprint-2]
 
 **Lessons Learned:** [
 ## Lessons Learned
