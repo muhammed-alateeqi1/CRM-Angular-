@@ -30,7 +30,7 @@ export class AuthService {
         }
         const token = this.generatedMockToken();
         console.log(token);
-        localStorage.setItem('token', token);
+        localStorage.setItem(this.TOKEN_KEY, token);
         this.isAuthenticatedSubject.next(true);
         return { success: true };
     }
