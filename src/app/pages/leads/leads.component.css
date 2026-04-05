@@ -1,0 +1,29 @@
+.header {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.header .left h2 {
+    font-size: 32px;
+    font-weight: 600;
+    color: #dfe0ff;
+}
+.header .left p {
+    color: #b1afc4;
+}
+.header .right button {
+    background-color: #737cea;
+    padding: 8px 22px;
+    border-radius:20px ;
+    color: #010EA4;
+    font-weight: 600;
+    transition: all ease .1s;
+}
+.header .right button:hover {
+    background-color: #4f4f8f;
+    padding: 8px 22px;
+    border-radius:20px ;
+    color: #dfe0ff;
+    font-weight: 600;
+}
